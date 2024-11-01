@@ -28,14 +28,16 @@
             text-align: center;
             
         }
+
+        
         .carousel p {
             margin: 0;
             font-size: 1.1rem;
-            color: #333;
+            
         }
         .slick-prev, .slick-next {
-            background-color: #007bff;
-            color: white;
+            background-image: linear-gradient(145deg, #e2e8ec, #ffffff);
+            box-shadow: 5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff;
             border-radius: 20px;
             padding: 10px 30px 30px 10px;
             font-weight: bold;
@@ -45,14 +47,14 @@
             z-index: 1;
         }
         .slick-prev:hover, .slick-next:hover {
-            background-color: #0056b3;
+            background-color: #ff014f;
         }
         .slick-slide {
             margin: 0 10px; /* Space between slides */
-        }
+        }        
     </style>
 </head>
-<body>
+<body style="background-color: #ECF0F3;">
 
     <div class="carousel-container">
         <!-- Slick Carousel -->
@@ -61,30 +63,46 @@
         </div>
     </div>
     
+   
+    
+    
 
 <!-- Slick Carousel Initialization -->
+<div class="carousel"></div>
+
 <script>
-    // Data for carousel items with associated colors
+    // Data for carousel items
     const carouselItems = [
-        { dangerZoneName: "Tarabo", numberOfPeople: 2, color: "#FF5733" }, 
-        { dangerZoneName: "Gulshan", numberOfPeople: 6, color: "#FF5733" }, 
-        { dangerZoneName: "Ramgoti", numberOfPeople: 3, color: "#FF5733" }, 
-        { dangerZoneName: "Uttara", numberOfPeople: 4, color: "#FF5733" }, 
-        { dangerZoneName: "Dhanmondi", numberOfPeople: 5, color: "#FF5733" }, 
-        { dangerZoneName: "Bashundhara", numberOfPeople: 7, color: "#FF5733" }  
+        { dangerZoneName: "Tarabo", numberOfPeople: 2 }, 
+        { dangerZoneName: "Gulshan", numberOfPeople: 6 }, 
+        { dangerZoneName: "Ramgoti", numberOfPeople: 3 }, 
+        { dangerZoneName: "Uttara", numberOfPeople: 4 }, 
+        { dangerZoneName: "Dhanmondi", numberOfPeople: 5 }, 
+        { dangerZoneName: "Bashundhara", numberOfPeople: 7 }  
     ];
 
     // Populate carousel with content from carouselItems array
     const carouselContainer = document.querySelector('.carousel');
     carouselItems.forEach(item => {
         const slide = document.createElement('div');
-        slide.style.backgroundColor = item.color; // Set background color dynamically
+        
+        // Set gradient background, border-radius, and box-shadow
+        slide.style.backgroundImage = "linear-gradient(145deg, #e2e8ec, #ffffff)";
+        slide.style.borderRadius = "10px";
+        slide.style.boxShadow = "5px 5px 15px #D1D9E6, -5px -5px 15px #ffffff";
+        slide.style.padding = "20px";
+        slide.style.margin = "10px";
+        
+        // Add content with danger zone info
         slide.innerHTML = `
-            <p style="color:white;"><strong>Danger Zone:</strong> ${item.dangerZoneName}</p>
-            <p style="color:white;"><strong>Number of People:</strong> ${item.numberOfPeople}</p>
+            <p style="color:#ff014f;"><strong>Danger Zone:</strong> ${item.dangerZoneName}</p>
+            <p style="color:#ff014f;"><strong>Number of People:</strong> ${item.numberOfPeople}</p>
         `;
+        
         carouselContainer.appendChild(slide);
     });
+
+    // Initialize Slick carousel after document is ready
     $(document).ready(function(){
         $('.carousel').slick({
             dots: false,
@@ -121,6 +139,7 @@
         });
     });
 </script>
+
 
 </body>
 </html>
